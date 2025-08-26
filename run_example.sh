@@ -10,8 +10,7 @@ nextflow run . \
     --input samplesheet.csv \
     --outdir ./results \
     -profile singularity \
-    -resume \
-    -c pawsey.config
+    -resume
 
 # Alternative: if you want to specify custom primer files
 # nextflow run . \
