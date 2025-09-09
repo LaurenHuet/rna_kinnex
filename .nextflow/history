@@ -1,0 +1,2 @@
+2025-09-09 11:35:34	3.4s	irreverent_allen	ERR	386ea1ee2af2cceaa7aec029d5a99694	14d4d0a8-66b4-41b2-9754-bab07589b49d	nextflow run . --input samplesheet.csv --outdir ./results --data_dir /scratch/pawsey0964/lhuet/PACB_250728_LAAK -profile singularity -resume
+2025-09-09 11:37:42	-	naughty_lumiere	-	386ea1ee2af2cceaa7aec029d5a99694	14d4d0a8-66b4-41b2-9754-bab07589b49d	nextflow run . --kinnex_samplesheet samplesheet.csv --outdir ./results --data_dir /scratch/pawsey0964/lhuet/PACB_250728_LAAK -profile singularity -resume

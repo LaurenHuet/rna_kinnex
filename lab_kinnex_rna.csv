@@ -1,0 +1,24 @@
+﻿Sample Plate Well ,Sequencing Sample ID (will put as sample name in smrtlink),Library type/sequencing purpose ,"Kinnex ""pool""",Kinnex adapter bc (BC01-BC04),Samples In pool ,Isoseq primer barcodes (Bc1-12)
+Plate 1- A01,PACB_250728_LAAK_P1A1,Kinnex,Pool5_Kinnex_250714_AK,BC01,OG37G_R_KL,BC04
+,,,,,OG37H_R_KL,BC04
+,,,,,OG46G_R_KL,BC06
+,,,,,OG46M_R_KL,BC06
+,,,,,OG85G_R_KL,BC09
+,,,,,OG85M_R_KL,BC09
+,,,Pool3_Kinnex_250714_AK,BC03,OG88G_R_KL2,BC10
+,,,,,OG88M_R_KL2,BC11
+Plate 1- B01,PACB_250728_LAAK_P1B1,Kinnex,Pool1_Kinnex_250707_LAAK,BC01,OG14G_R_KL,BC03
+,,,,,OG14M_R,BC03
+,,,,,OG15G_R,BC04
+,,,,,OG15M_R,BC04
+Plate 1- C01,PACB_250728_LAAK_P1C1,Kinnex,Pool1_Kinnex_250714_AK,BC01,OG698G_R_KL,BC02
+,,,,,OG698M_R_KL,BC02
+,,,,,OG36M_R_KL2,BC12
+,,Kinnex,Pool2_Kinnex_250714_AK,BC02,OG686G_R_KL,BC03
+,,,,,OG686M_R_KL,BC03
+,,,,,OG38G_R_KL,BC05
+,,,,,OG38M_R_KL,BC05
+,,Kinnex,Pool4_Kinnex_250714_AK,BC04,OG696H_R_KL,BC01
+,,,,,OG696M_R_KL,BC01
+,,,,,OG54G_R_KL,BC07
+,,,,,OG54M_R_KL,BC07
