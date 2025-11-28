@@ -4,12 +4,6 @@
 
 ### Step 1: Understanding Your Lab's Data
 
-Your lab provides data in this format:
-```
-Sample Plate Well  Sequencing Sample ID  Library type  Kinnex "pool"  Kinnex adapter bc  Samples In pool  Isoseq primer barcodes
-Plate 1- A01       PACB_250728_LAAK_P1A1  Kinnex       Pool5_Kinnex_250714_AK  BC01  OG37G_R_KL  BC04
-```
-
 ### Step 2: What the Parser Needs
 
 The pipeline expects this CSV format:
@@ -20,9 +14,6 @@ plate_well,sequencing_sample_id,library_type,kinnex_pool,kinnex_adapter_bc,sampl
 
 ### Step 3: Key Transformations
 
-1. **Plate Well Format**: 
-   - Lab: `Plate 1- A01` 
-   - Pipeline: `1_A01`
 
 2. **Column Mapping**:
    - `Sample Plate Well` → `plate_well`
@@ -51,7 +42,7 @@ When you run the pipeline, the parser:
    ```
 
 2. **Maps BAM files** to samples:
-   - Finds: `1_A01/hifi/m84154_250728_084101_s1.hifi_reads.bcM0001.bam`
+   - Finds: `1_A01/m84154_250728_084101_s1.hifi_reads.bcM0001.bam`
    - Maps: `bcM0001` → `BC01` → finds all samples in BC01 pool
    - During demultiplexing: `BC04` → `OG37G_R_KL.bam`
 

@@ -25,12 +25,13 @@ run_id = "PACB_251117_LAAMD"   # <-- change as needed
 create_function_sql = """
 CREATE OR REPLACE FUNCTION build_rna_kinx_samplesheet_from_run(in_run_id text)
 RETURNS TABLE (
-  plate               text,
-  plate_location      text,
-  pool_id             text,
-  kinnex_primers      text,
-  kinnex_barcodes     text,
-  rna_library_tube_id text
+  plate_well          text,
+  sequencing_sample_id text,
+  library_type        text,
+  kinnex_pool         text,
+  kinnex_adapter_bc   text,
+  samples_in_pool     text,
+  isoseq_primer_bc    text
 )
 LANGUAGE sql
 AS $$
@@ -38,19 +39,28 @@ WITH tubes AS (
     SELECT DISTINCT rna_library_tube_id
     FROM sequencing
     WHERE run_id = in_run_id
-), matched AS (
+),
+matched AS (
     SELECT
-        rlk.plate,
-        rlk.plate_location,
-        rlk.pool_id,
-        rlk.kinnex_primers,
-        rlk.kinnex_barcode AS kinnex_barcodes,
-        rlk.rna_library_tube_id
+        -- 1_A01, 1_B01, etc.
+        concat(rlk.plate, '_', rlk.plate_location, '01') AS plate_well,
+        s.run_id AS sequencing_sample_id,     
+        replace(rlk.library_method, ' ', '_') AS library_type,
+        rlk.pool_id      AS kinnex_pool,
+        rlk.kinnex_barcode AS kinnex_adapter_bc,
+        s.rna_library_tube_id   AS samples_in_pool,
+        rlk.kinnex_primers AS isoseq_primer_bc
+
     FROM rna_library_kinx rlk
-    JOIN tubes t ON t.rna_library_tube_id = rlk.rna_library_tube_id
+    JOIN tubes t
+      ON t.rna_library_tube_id = rlk.rna_library_tube_id
+    JOIN sequencing s
+      ON s.rna_library_tube_id = rlk.rna_library_tube_id
+     AND s.run_id = in_run_id
 )
-SELECT * FROM matched
-ORDER BY rna_library_tube_id;
+SELECT *
+FROM matched
+ORDER BY plate_well;
 $$;
 """
 
@@ -59,6 +69,10 @@ $$;
 # =====================================
 conn = psycopg2.connect(**db_params)
 cur = conn.cursor()
+
+# Drop old version so we can change the RETURN TABLE signature
+cur.execute("DROP FUNCTION IF EXISTS build_rna_kinx_samplesheet_from_run(text);")
+conn.commit()
 
 cur.execute(create_function_sql)
 conn.commit()
