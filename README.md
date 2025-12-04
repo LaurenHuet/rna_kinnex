@@ -125,13 +125,13 @@ singularity run $SING/psycopg2:0.1.sif python push_rna_qc_to_sqldb.py ~/postgres
 
 Back up the data to the PacBio SRA s3 bucket, dry run is automaticlly flagged, as we need to set up the backup directory strture first, so run the dry run and check the strcuture. If happy run the DRY_RUN=0 script.
 
-``bash
+```bash
 bash backup_s3.sh
 
 DRY_RUN=0 bash backup_s3.sh
 ```
-```
 ### Expected output structure from pipeline
+
 ```
 results/
 ├── skera/                          # Adapter-removed BAM files
