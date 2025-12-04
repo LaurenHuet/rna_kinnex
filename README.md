@@ -1,6 +1,6 @@
 # RNA Kinnex Pipeline — User Guide
 
-This pipeline processes PacBio RNA Kinnex data to demultiplex and analyse individual fish samples. It takes concatenated BAM files and separates them into individual fish samples with consistent naming and per-sample QC reports.
+This pipeline processes PacBio RNA Kinnex data to demultiplex and analyse individual samples. It takes concatenated BAM files and separates them into individual samples with consistent naming and per-sample QC reports.
 
 ## Overview
 
